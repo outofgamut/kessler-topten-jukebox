@@ -1,34 +1,11 @@
-<!-- <div style="text-align:center">
-  <h1>
-    From Texas to Tennessee
-  </h1>
-</div>
-
-<button class="button is-primary" (click)="playlistService.skip('prev')">Previous</button>
-<button class="button is-primary" *ngIf="!playlistService.sound.playing()" (click)="playlistService.resume()">Play</button>
-<button class="button is-primary" *ngIf="playlistService.sound.playing()" (click)="playlistService.pause()">Pause</button>
-<button class="button is-primary" (click)="playlistService.skip('next')">Next</button>
-<button class="button is-primary" (click)="playlistService.stop()">Stop</button>
-
-<h2>{{ playlistService.currentSong.title }}</h2>
-<h3>{{ playlistService.currentSong.artist }}</h3>
-<h3>{{ playlistService.formatTime(playlistService.sound.duration()) }}</h3> -->
-
-
-<section class="hero is-medium is-dark is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Kessler Theatre Mixtape
-      </h1>
-      <h2 class="subtitle">
-        Texas & Tennessee
-      </h2>
-    </div>
-  </div>
-</section>
-<section class="section">
+<section class="section wood-img">
   <div class="container">
+    <h1 class="title has-text-white">
+      Kessler Theatre Mixtape
+    </h1>
+    <h2 class="subtitle has-text-white">
+      Texas & Tennessee
+    </h2>
     <div class="card">
       <div class="card-content">
         <p class="title">
@@ -37,18 +14,29 @@
         <p class="subtitle">
           {{ playlistService.currentSong.artist }} ({{ playlistService.formatTime(playlistService.sound.duration()) }})
         </p>
-        <button class="button is-primary" (click)="playlistService.skip('prev')"><i class="fa fa-step-backward"></i></button>
-        <button class="button is-primary" *ngIf="!playlistService.sound.playing()" (click)="playlistService.resume()"><i class="fa fa-play"></i></button>
-        <button class="button is-primary" *ngIf="playlistService.sound.playing()" (click)="playlistService.pause()"><i class="fa fa-pause"></i></button>
-        <button class="button is-primary" (click)="playlistService.stop()"><i class="fa fa-stop"></i></button>
-        <button class="button is-primary" (click)="playlistService.skip('next')"><i class="fa fa-step-forward"></i></button>
+        <button class="button is-primary" (click)="playlistService.skip('prev')">
+          <i class="fa fa-step-backward"></i>
+        </button>
+        <button class="button is-primary" *ngIf="!playlistService.sound.playing()" (click)="playlistService.resume()">
+          <i class="fa fa-play"></i>
+        </button>
+        <button class="button is-primary" *ngIf="playlistService.sound.playing()" (click)="playlistService.pause()">
+          <i class="fa fa-pause"></i>
+        </button>
+        <button class="button is-primary" (click)="playlistService.stop()">
+          <i class="fa fa-stop"></i>
+        </button>
+        <button class="button is-primary" (click)="playlistService.skip('next')">
+          <i class="fa fa-step-forward"></i>
+        </button>
       </div>
     </div>
   </div>
 </section>
 <section class="section">
   <div class="container">
-    <div class="box" *ngFor="let song of playlistService.playlist">
+    <p class="is-size-3">{{playlistService.playlist.length}} Tracks</p>
+    <div class="box" *ngFor="let song of playlistService.playlist; let i = index;">
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
@@ -58,13 +46,14 @@
         <div class="media-content">
           <div class="content">
             <p>
-              <strong>{{song.title}}</strong>
+              <strong>{{i+1}}. {{song.title}}</strong>
+              <small>{{song.category}}</small>
               <br> {{song.artist}}
             </p>
           </div>
           <nav class="level is-mobile">
             <div class="level-left">
-              <a class="level-item" (click)="playlistService.skipTo(1)">
+              <a class="level-item" (click)="playlistService.skipTo(i)">
                 <i class="fa fa-play-circle"></i>
               </a>
             </div>
