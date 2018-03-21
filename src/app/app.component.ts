@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Howl } from 'howler';
+import { PlaylistService } from './playlist.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
+
+  constructor(
+    public playlistService: PlaylistService,
+  ) { }
+
+  ngOnInit(): void {
+    this.playlistService.play(0);
+  }
 }

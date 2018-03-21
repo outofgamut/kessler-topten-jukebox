@@ -1,20 +1,76 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <h1>
-    Welcome to {{ title }}!
+    From Texas to Tennessee
   </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+<button class="button is-primary" (click)="playlistService.skip('prev')">Previous</button>
+<button class="button is-primary" *ngIf="!playlistService.sound.playing()" (click)="playlistService.resume()">Play</button>
+<button class="button is-primary" *ngIf="playlistService.sound.playing()" (click)="playlistService.pause()">Pause</button>
+<button class="button is-primary" (click)="playlistService.skip('next')">Next</button>
+<button class="button is-primary" (click)="playlistService.stop()">Stop</button>
+
+<h2>{{ playlistService.currentSong.title }}</h2>
+<h3>{{ playlistService.currentSong.artist }}</h3>
+<h3>{{ playlistService.formatTime(playlistService.sound.duration()) }}</h3> -->
+
+
+<section class="hero is-medium is-dark is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Kessler Theatre Mixtape
+      </h1>
+      <h2 class="subtitle">
+        Texas & Tennessee
+      </h2>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="card">
+      <div class="card-content">
+        <p class="title">
+          {{ playlistService.currentSong.title }}
+        </p>
+        <p class="subtitle">
+          {{ playlistService.currentSong.artist }} ({{ playlistService.formatTime(playlistService.sound.duration()) }})
+        </p>
+        <button class="button is-primary" (click)="playlistService.skip('prev')"><i class="fa fa-step-backward"></i></button>
+        <button class="button is-primary" *ngIf="!playlistService.sound.playing()" (click)="playlistService.resume()"><i class="fa fa-play"></i></button>
+        <button class="button is-primary" *ngIf="playlistService.sound.playing()" (click)="playlistService.pause()"><i class="fa fa-pause"></i></button>
+        <button class="button is-primary" (click)="playlistService.stop()"><i class="fa fa-stop"></i></button>
+        <button class="button is-primary" (click)="playlistService.skip('next')"><i class="fa fa-step-forward"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="box" *ngFor="let song of playlistService.playlist">
+      <article class="media">
+        <div class="media-left">
+          <figure class="image is-64x64">
+            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{song.title}}</strong>
+              <br> {{song.artist}}
+            </p>
+          </div>
+          <nav class="level is-mobile">
+            <div class="level-left">
+              <a class="level-item" (click)="playlistService.skipTo(1)">
+                <i class="fa fa-play-circle"></i>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
