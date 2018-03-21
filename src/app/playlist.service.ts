@@ -5,6 +5,7 @@ export interface Song {
   artist: string;
   path: string;
   category: string;
+  img?: string;
   howl?: Howl;
 }
 
@@ -31,12 +32,14 @@ export class PlaylistService {
       title: 'My heroes have always been Cowboys',
       artist: 'Willie Nelson',
       path: 'assets/Songs/Phaseone/Unknown Album/Daily Routine.mp3',
+      img: 'assets/Images/willie_nelson.jpg',
       category: 'Texas-Nashville connection'
     },
     {
       title: 'Bobbie McGee',
       artist: 'Kris Kristopherson',
       path: 'assets/Songs/Phaseone/White Collar Crime/10 No Slack.mp3',
+      img: 'assets/Images/kris_kristofferson.jpg',
       category: 'Texas-Nashville connection'
     },
     {
@@ -146,18 +149,15 @@ export class PlaylistService {
       this.playlist[this.playingIndex].howl.stop();
     }
 
-    // Play the new track.
     this.play(index);
   }
 
   pause() {
     this.sound.pause();
-    console.log(this.sound.playing());
   }
 
   resume() {
     this.sound.play();
-    console.log(this.sound.playing());
   }
 
   stop() {
@@ -165,7 +165,6 @@ export class PlaylistService {
   }
 
   formatTime(secs: number) {
-    console.log('secs', secs);
     const roundedSecs = Math.round(secs);
     const minutes = Math.floor(roundedSecs / 60) || 0;
     const seconds = (roundedSecs - minutes * 60) || 0;
