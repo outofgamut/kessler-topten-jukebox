@@ -26,14 +26,14 @@ export class PlaylistService {
     {
       title: 'Bobbie McGee',
       artist: 'Kris Kristopherson',
-      path: 'assets/Songs/Phaseone/White Collar Crime/10 No Slack.mp3',
+      path: 'assets/Songs/Kris Kristofferson/16 Biggest Hits/01 - Me and Bobby McGee.mp3',
       img: 'assets/Images/kris_kristofferson.jpg',
       category: 'Texas-Nashville connection'
     },
     {
-      title: 'Luckenbach, TX',
+      title: 'Mr. Bojangles',
       artist: 'Jerry Jeff Walker',
-      path: 'assets/Songs/Phaseone/Unknown Album/Daily Routine.mp3',
+      path: 'assets/Songs/Jerry Jeff Walker/Mr. Bojangles/02 - Mr. Bojangles.mp3',
       category: 'Texas-Nashville connection'
     },
     {
@@ -94,6 +94,10 @@ export class PlaylistService {
 
     this.skipTo(index);
 
+  }
+
+  isPlaying(index: number) {
+    return this.playingIndex === index;
   }
 
   play(index: number) {
