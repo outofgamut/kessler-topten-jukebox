@@ -17,21 +17,9 @@ export class PlaylistService {
   currentSong: Song;
   playlist: Array<Song> = [
     {
-      title: 'Helicopter',
-      artist: 'Test Artist',
-      path: 'assets/Songs/helicopter.mp3',
-      category: 'Texas-Nashville connection'
-    },
-    {
-      title: 'Sweeping',
-      artist: 'Test Artist',
-      path: 'assets/Songs/sweeping.mp3',
-      category: 'Texas-Nashville connection'
-    },
-    {
       title: 'My heroes have always been Cowboys',
       artist: 'Willie Nelson',
-      path: 'assets/Songs/Phaseone/Unknown Album/Daily Routine.mp3',
+      path: 'assets/Songs/Willie Nelson/Greatest Hits (& Some That Will Be)/13 - My Heroes Have Always Been Cowboys.mp3',
       img: 'assets/Images/willie_nelson.jpg',
       category: 'Texas-Nashville connection'
     },

@@ -5,7 +5,7 @@
 /dist-server
 /tmp
 /out-tsc
-/assets/Songs
+/src/assets/Songs
 
 # dependencies
 /node_modules
