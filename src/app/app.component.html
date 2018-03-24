@@ -1,42 +1,64 @@
 <section class="section wood-img">
-  <div class="container">
-    <h1 class="title has-text-white is-uppercase">
-      <strong>The Dallas Assembly</strong>
-    </h1>
-    <h2 class="subtitle has-text-white is-italic">
-      <small>Dallas to Nashville, 2018</small>
-    </h2>
-    <div class="card">
-      <div class="card-content">
-        <div class="category">
-          <i><small>{{ playlistService.currentSong.category }}</small></i>
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <img src="assets/Images/poster.jpg">
         </div>
-        <p class="title">
-          {{ playlistService.currentSong.title }}
-        </p>
-        <p class="subtitle">
-          {{ playlistService.currentSong.artist }} ({{ playlistService.formatTime(playlistService.sound.duration()) }})
-        </p>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-info">
+            <div class="container">
+              <h1 class="title has-text-white is-uppercase">
+                <strong>The Dallas Assembly</strong>
+              </h1>
+              <h2 class="subtitle has-text-white is-italic">
+                <small>Dallas to Nashville, 2018</small>
+              </h2>
+              <div class="card">
+                <div class="card-content">
+                  <div class="category">
+                    <i>
+                      <small>{{ playlistService.currentSong.category }}</small>
+                    </i>
+                  </div>
+                  <p class="title">
+                    {{ playlistService.currentSong.title }}
+                  </p>
+                  <p class="subtitle">
+                    {{ playlistService.currentSong.artist }} ({{ playlistService.formatTime(playlistService.sound.duration()) }})
+                  </p>
+                </div>
+              </div>
+              <div class="playback-controls">
+                <button class="button is-black" (click)="playlistService.skip('prev')">
+                  <i class="fa fa-step-backward"></i>
+                </button>
+                <button class="button is-black" *ngIf="!playlistService.sound.playing()" (click)="playlistService.resume()">
+                  <i class="fa fa-play"></i>
+                </button>
+                <button class="button is-black" *ngIf="playlistService.sound.playing()" (click)="playlistService.pause()">
+                  <i class="fa fa-pause"></i>
+                </button>
+                <button class="button is-black" (click)="playlistService.stop()">
+                  <i class="fa fa-stop"></i>
+                </button>
+                <button class="button is-black" (click)="playlistService.skip('next')">
+                  <i class="fa fa-step-forward"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
+
     </div>
-    <div class="playback-controls">
-      <button class="button is-black" (click)="playlistService.skip('prev')">
-        <i class="fa fa-step-backward"></i>
-      </button>
-      <button class="button is-black" *ngIf="!playlistService.sound.playing()" (click)="playlistService.resume()">
-        <i class="fa fa-play"></i>
-      </button>
-      <button class="button is-black" *ngIf="playlistService.sound.playing()" (click)="playlistService.pause()">
-        <i class="fa fa-pause"></i>
-      </button>
-      <button class="button is-black" (click)="playlistService.stop()">
-        <i class="fa fa-stop"></i>
-      </button>
-      <button class="button is-black" (click)="playlistService.skip('next')">
-        <i class="fa fa-step-forward"></i>
-      </button>
-    </div>
+
   </div>
+
+
+
+
+
 </section>
 <section class="section">
   <div class="container">
@@ -71,6 +93,11 @@
     </div>
   </div>
 </section>
+
+Quisque non semper leo.
+
+
+
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">

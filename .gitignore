@@ -6,6 +6,7 @@
 /tmp
 /out-tsc
 /src/assets/Songs
+/src/assets/Images/album
 
 # dependencies
 /node_modules
