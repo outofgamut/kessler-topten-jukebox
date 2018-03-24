@@ -12,7 +12,7 @@ import 'rxjs/add/observable/interval';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'app';
+  title = 'Dallas Assembly';
   position: any;
   sub: Subscription;
 
