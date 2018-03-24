@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PlaylistService } from './playlist.service';
+import { SongCardComponent } from './song-card/song-card.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SongCardComponent
   ],
   imports: [
     BrowserModule

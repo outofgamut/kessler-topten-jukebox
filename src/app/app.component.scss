@@ -1,6 +1,5 @@
 .bg-img {
     background-image: url("http://oakclifffilmfestival.com/assets/11458255244_8c58d68a5b_b.jpg");
-  
     background-size: cover;
 }
 
@@ -13,14 +12,14 @@
 }
 
 .card {
-    min-height: 240px;
+    min-height: 180px;
 }
 
 .category {
     padding-bottom: 16px;
 }
 
-.overflow {
-    overflow-y: auto;
-    max-height: 300px;
-}
+// .overflow {
+//     overflow-y: auto;
+//     max-height: 300px;
+// }
