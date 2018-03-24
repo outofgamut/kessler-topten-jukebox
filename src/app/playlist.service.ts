@@ -13,7 +13,6 @@ export interface Song {
 export class PlaylistService {
 
   sound: Howl;
-  playingIndex = 0;
   currentSong: Song;
   playlist: Array<Song> = [
     {
@@ -276,6 +275,9 @@ export class PlaylistService {
       img: 'assets/Images/album/James McMurtry Choctaw Bingo.jpg',
     },
   ];
+  playingIndex = 0;
+  previousIndex = this.playlist.length - 1;
+  nextIndex = 1;
 
   constructor() { }
 
@@ -335,6 +337,8 @@ export class PlaylistService {
 
     // Keep track of the index we are currently playing.
     this.playingIndex = index;
+    this.previousIndex = index > 0 ? index - 1 : this.playlist.length - 1;
+    this.nextIndex = index < this.playlist.length - 1 ? index + 1 : 0;
   }
   /**
  * Skip to a specific track based on its playlist index.
@@ -365,7 +369,7 @@ export class PlaylistService {
     this.sound.stop();
   }
 
-  formatTime(secs: number) {
+  formatTime(secs) {
     const roundedSecs = Math.round(secs);
     const minutes = Math.floor(roundedSecs / 60) || 0;
     const seconds = (roundedSecs - minutes * 60) || 0;

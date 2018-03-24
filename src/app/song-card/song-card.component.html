@@ -1,4 +1,6 @@
-<div class="box">
+<div class="box" (click)="playlistService.skipTo(i)" style="cursor: pointer;">
+  <h3>{{label}}</h3>
+  <br>
   <article class="media">
     <div class="media-left">
       <figure class="image is-64x64">
@@ -8,21 +10,11 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{i+1}}. {{song.title}}</strong>
-          <small>{{song.category}}</small>
-          <br> {{song.artist}}
+          <strong>{{song.title}}</strong>
+          <br>
+          <small>{{song.artist}}</small>
         </p>
       </div>
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <a class="level-item" *ngIf="!playlistService.isPlaying(i)" (click)="playlistService.skipTo(i)">
-            <i class="fa fa-play-circle"></i>
-          </a>
-          <span class="level-item" *ngIf="playlistService.isPlaying(i)">
-            Currently playing...
-          </span>
-        </div>
-      </nav>
     </div>
   </article>
 </div>

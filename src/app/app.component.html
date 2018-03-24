@@ -2,41 +2,56 @@
   <div class="columns">
     <div class="column is-one-quarter">
       <img src="assets/Images/poster.jpg">
-      <div class="playback-controls is-pulled-right">
-        <button class="button is-black" (click)="playlistService.skip('prev')">
-          <i class="fa fa-step-backward"></i>
-        </button>
-        <button class="button is-black" *ngIf="!playlistService.sound.playing()" (click)="playlistService.resume()">
-          <i class="fa fa-play"></i>
-        </button>
-        <button class="button is-black" *ngIf="playlistService.sound.playing()" (click)="playlistService.pause()">
-          <i class="fa fa-pause"></i>
-        </button>
-        <button class="button is-black" (click)="playlistService.stop()">
-          <i class="fa fa-stop"></i>
-        </button>
-        <button class="button is-black" (click)="playlistService.skip('next')">
-          <i class="fa fa-step-forward"></i>
-        </button>
-      </div>
     </div>
     <div class="column">
+      <p class="has-text-white is-uppercase">{{playlistService.currentSong.category}}</p>
       <div class="box">
         <div class="box-content">
-          <i>
-            <small>{{ playlistService.currentSong.category }}</small>
-          </i>
-          <p class="title">
-            {{ playlistService.currentSong.title }}
-          </p>
-          <p class="subtitle">
-            {{ playlistService.currentSong.artist }} ({{ playlistService.formatTime(playlistService.sound.duration()) }})
-          </p>
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-128x128">
+                <img [src]="playlistService.currentSong.img || 'https://bulma.io/images/placeholders/128x128.png'" alt="Image">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong> {{ playlistService.currentSong.title }} </strong>
+                  <br> {{ playlistService.currentSong.artist }}
+                  <br><small>{{ playlistService.formatTime(position) }} / {{ playlistService.formatTime(playlistService.sound.duration()) }}</small>
+                </p>
+                <div class="playback-controls">
+                  <button class="button is-black is-small" (click)="playlistService.skip('prev')">
+                    <i class="fa fa-step-backward"></i>
+                  </button>
+                  <button class="button is-black is-small" *ngIf="!playlistService.sound.playing()" (click)="playlistService.resume()">
+                    <i class="fa fa-play"></i>
+                  </button>
+                  <button class="button is-black is-small" *ngIf="playlistService.sound.playing()" (click)="playlistService.pause()">
+                    <i class="fa fa-pause"></i>
+                  </button>
+                  <button class="button is-black is-small" (click)="playlistService.stop()">
+                    <i class="fa fa-stop"></i>
+                  </button>
+                  <button class="button is-black is-small" (click)="playlistService.skip('next')">
+                    <i class="fa fa-step-forward"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column">
+          <app-song-card label="Last Song" [song]="playlistService.playlist[playlistService.previousIndex]" [i]="playlistService.previousIndex"></app-song-card>
+        </div>
+        <div class="column">
+          <app-song-card label="Next Song" [song]="playlistService.playlist[playlistService.nextIndex]" [i]="playlistService.nextIndex"></app-song-card>
         </div>
       </div>
     </div>
   </div>
-
 
 </section>
 <section class="section">

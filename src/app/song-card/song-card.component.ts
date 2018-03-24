@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Song } from '../playlist.service';
+import { Song, PlaylistService } from '../playlist.service';
 
 @Component({
   selector: 'app-song-card',
@@ -9,8 +9,12 @@ import { Song } from '../playlist.service';
 export class SongCardComponent implements OnInit {
 
   @Input() song: Song;
+  @Input() i: number;
+  @Input() label: string;
 
-  constructor() { }
+  constructor(
+    public playlistService: PlaylistService
+  ) { }
 
   ngOnInit() {
   }
