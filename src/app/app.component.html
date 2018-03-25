@@ -4,8 +4,9 @@
       <img src="assets/Images/poster.jpg">
     </div>
     <div class="column">
-      <p class="has-text-white is-uppercase">{{playlistService.currentSong.category}}</p>
       <div class="box">
+        <h3 class="has-text-black is-uppercase">{{playlistService.currentSong.category}}</h3>
+        <br>
         <div class="box-content">
           <article class="media">
             <figure class="media-left">
@@ -16,11 +17,12 @@
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong> {{ playlistService.currentSong.title }} </strong>
+                  <strong>{{playlistService.playingIndex + 1}}. {{ playlistService.currentSong.title }} </strong>
                   <br> {{ playlistService.currentSong.artist }}
                   <br>
                   <small>{{ playlistService.formatTime(position) }} / {{ playlistService.formatTime(playlistService.sound.duration())
-                    }}</small>
+                    }}
+                  </small>
                 </p>
                 <div class="playback-controls">
                   <button class="button is-black is-small" (click)="playlistService.skip('prev')">
@@ -60,6 +62,8 @@
   <div class="container">
     <p class="is-size-3">{{playlistService.playlist.length}} Tracks</p>
     <div class="box" *ngFor="let song of playlistService.playlist; let i = index;">
+      <h5 class="has-text-black is-uppercase">{{song.category}}</h5>
+      <br>
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
@@ -70,7 +74,6 @@
           <div class="content">
             <p>
               <strong>{{i+1}}. {{song.title}}</strong>
-              <small>{{song.category}}</small>
               <br> {{song.artist}}
             </p>
           </div>
@@ -79,9 +82,9 @@
               <button class="level-item button is-black is-small" *ngIf="!playlistService.isPlaying(i)" (click)="playlistService.skipTo(i)">
                 <i class="fa fa-play"></i>
               </button>
-              <span class="level-item" *ngIf="playlistService.isPlaying(i)">
-                Currently playing...
-              </span>
+              <button class="level-item button is-success is-small" *ngIf="playlistService.isPlaying(i)">
+                Playing
+              </button>
             </div>
           </nav>
         </div>

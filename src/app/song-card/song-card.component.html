@@ -1,5 +1,5 @@
 <div class="box" (click)="playlistService.skipTo(i)" style="cursor: pointer;">
-  <h3>{{label}}</h3>
+  <h3 class="has-text-dark">{{label}}</h3>
   <br>
   <article class="media">
     <div class="media-left">
@@ -10,7 +10,7 @@
     <div class="media-content">
       <div class="content">
         <p>
-          <strong>{{song.title}}</strong>
+          <strong>{{i + 1}}. {{song.title}}</strong>
           <br>
           <small>{{song.artist}}</small>
         </p>
