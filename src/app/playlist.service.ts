@@ -16,7 +16,7 @@ export class PlaylistService {
   currentSong: Song;
   playlist: Array<Song> = [
     {
-      title: 'My heroes have always been Cowboys',
+      title: 'My Heroes Have Always Been Cowboys',
       artist: 'Willie Nelson',
       path: 'assets/Songs/Willie Nelson/Greatest Hits (& Some That Will Be)/13 - My Heroes Have Always Been Cowboys.mp3',
       img: 'assets/Images/album/Willie Nelson  “My heroes have always been Cowboys”.jpg',
@@ -207,7 +207,7 @@ export class PlaylistService {
     {
       category: 'Adopted Texans',
       title: 'If We Were Vampires',
-      artist: 'Jason Isabell',
+      artist: 'Jason Isbell',
       path: 'assets/Songs/Jason Isbell and the 400 Unit/The Nashville Sound/05 - If We Were Vampires.mp3',
       img: 'assets/Images/album/Jason Isabell – If we were Vampires.jpg',
     },
