@@ -18,7 +18,9 @@
                 <p>
                   <strong> {{ playlistService.currentSong.title }} </strong>
                   <br> {{ playlistService.currentSong.artist }}
-                  <br><small>{{ playlistService.formatTime(position) }} / {{ playlistService.formatTime(playlistService.sound.duration()) }}</small>
+                  <br>
+                  <small>{{ playlistService.formatTime(position) }} / {{ playlistService.formatTime(playlistService.sound.duration())
+                    }}</small>
                 </p>
                 <div class="playback-controls">
                   <button class="button is-black is-small" (click)="playlistService.skip('prev')">
@@ -43,7 +45,7 @@
         </div>
       </div>
       <div class="columns">
-        <div class="column">
+        <div class="column is-hidden-mobile">
           <app-song-card label="Last Song" [song]="playlistService.playlist[playlistService.previousIndex]" [i]="playlistService.previousIndex"></app-song-card>
         </div>
         <div class="column">
@@ -74,9 +76,9 @@
           </div>
           <nav class="level is-mobile">
             <div class="level-left">
-              <a class="level-item" *ngIf="!playlistService.isPlaying(i)" (click)="playlistService.skipTo(i)">
-                <i class="fa fa-play-circle"></i>
-              </a>
+              <button class="level-item button is-black is-small" *ngIf="!playlistService.isPlaying(i)" (click)="playlistService.skipTo(i)">
+                <i class="fa fa-play"></i>
+              </button>
               <span class="level-item" *ngIf="playlistService.isPlaying(i)">
                 Currently playing...
               </span>
