@@ -10,7 +10,6 @@ export class SongCardComponent implements OnInit {
 
   @Input() song: Song;
   @Input() i: number;
-  @Input() label: string;
 
   constructor(
     public playlistService: PlaylistService

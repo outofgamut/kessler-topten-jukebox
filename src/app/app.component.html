@@ -4,6 +4,11 @@
       <img src="assets/Images/poster.jpg">
     </div>
     <div class="column">
+      <div class="columns">
+        <div class="column is-hidden-mobile">
+          <app-song-card [song]="playlistService.playlist[playlistService.previousIndex]" [i]="playlistService.previousIndex"></app-song-card>
+        </div>
+      </div>
       <div class="box">
         <h3 class="has-text-black is-uppercase">{{playlistService.currentSong.category}}</h3>
         <br>
@@ -47,11 +52,8 @@
         </div>
       </div>
       <div class="columns">
-        <div class="column is-hidden-mobile">
-          <app-song-card label="Last Song" [song]="playlistService.playlist[playlistService.previousIndex]" [i]="playlistService.previousIndex"></app-song-card>
-        </div>
         <div class="column">
-          <app-song-card label="Next Song" [song]="playlistService.playlist[playlistService.nextIndex]" [i]="playlistService.nextIndex"></app-song-card>
+          <app-song-card [song]="playlistService.playlist[playlistService.nextIndex]" [i]="playlistService.nextIndex"></app-song-card>
         </div>
       </div>
     </div>
@@ -60,7 +62,8 @@
 </section>
 <section class="section">
   <div class="container">
-    <p class="is-size-3">{{playlistService.playlist.length}} Tracks</p>
+    <p class="is-size-4">{{playlistService.playlist.length}} Tracks</p>
+    <br>
     <div class="box" *ngFor="let song of playlistService.playlist; let i = index;">
       <h5 class="has-text-black is-uppercase">{{song.category}}</h5>
       <br>
